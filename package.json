@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "react-portfolio",
+  "version": "1.0.0",
+  "description": "Server for react portfolio page",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RyanLarge13/React-Portfolio-Server.git"
+  },
+  "author": "Ryan Large",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanLarge13/React-Portfolio-Server/issues"
+  },
+  "homepage": "https://github.com/RyanLarge13/React-Portfolio-Server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
