@@ -26,6 +26,6 @@ app.use(
 );
 app.use("/dev", devRouter);
 
-app.listen(port, () =>
+app.listen(port, '0.0.0.0', () =>
   console.log(`Your app is running on port ${port} : https://localhost:${port}`)
 );
