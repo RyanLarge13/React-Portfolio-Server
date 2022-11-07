@@ -8,7 +8,7 @@ connectDB();
 
 const app = express();
 const port = 8080;
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = ["http://localhost:3000", "https://react-folio.onrender.com"];
 
 app.use(
   cors({
@@ -26,6 +26,6 @@ app.use(
 );
 app.use("/dev", devRouter);
 
-app.listen(port, '0.0.0.0', () =>
+app.listen(port, "0.0.0.0", () =>
   console.log(`Your app is running on port ${port} : https://localhost:${port}`)
 );
