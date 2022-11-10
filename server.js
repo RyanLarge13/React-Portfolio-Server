@@ -11,7 +11,7 @@ const app = express();
 const port = 8080;
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://react-folio.onrender.com",
+  "https://todo-fullstack-production.up.railway.app/",
 ];
 
 app.use(
