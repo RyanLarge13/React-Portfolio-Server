@@ -2,13 +2,17 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { devRouter } from "./routes/devRouter.js";
+import { downloadRouter } from "./routes/downloadRouter.js";
 import { connectDB } from "./config/db.js";
 dotenv.config();
 connectDB();
 
 const app = express();
 const port = 8080;
-const allowedOrigins = ["http://localhost:3000", "https://react-folio.onrender.com"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://react-folio.onrender.com",
+];
 
 app.use(
   cors({
@@ -24,6 +28,7 @@ app.use(
     },
   })
 );
+app.use("/", downloadRouter);
 app.use("/dev", devRouter);
 
 app.listen(port, "0.0.0.0", () =>
