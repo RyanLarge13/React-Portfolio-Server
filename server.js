@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { devRouter } from "./routes/devRouter.js";
 import { downloadRouter } from "./routes/downloadRouter.js";
+import {emailRouter} from './routes/emailRouter.js'
 import { connectDB } from "./config/db.js";
 dotenv.config();
 connectDB();
@@ -30,6 +31,7 @@ app.use(
 );
 app.use("/", downloadRouter);
 app.use("/dev", devRouter);
+app.use("/mailme", emailRouter);
 
 app.listen(port, "0.0.0.0", () =>
   console.log(`Your app is running on port ${port} : https://localhost:${port}`)
