@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import parser from "body-parser";
 import { devRouter } from "./routes/devRouter.js";
 import { downloadRouter } from "./routes/downloadRouter.js";
-import {emailRouter} from './routes/emailRouter.js'
+import { emailRouter } from "./routes/emailRouter.js";
 import { connectDB } from "./config/db.js";
 dotenv.config();
 connectDB();
@@ -29,6 +30,8 @@ app.use(
     },
   })
 );
+app.use(parser.urlencoded({ extended: false }));
+app.use(parser.json())
 app.use("/", downloadRouter);
 app.use("/dev", devRouter);
 app.use("/mailme", emailRouter);
