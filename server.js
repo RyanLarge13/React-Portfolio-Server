@@ -14,6 +14,7 @@ const port = process.env.PORT || 8080;
 const allowedOrigins = [
   "http://localhost:3000",
   "https://react-folio.onrender.com",
+  "https://www.ryanlarge.dev"
 ];
 
 app.use(
