@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 export const emailMe = (req, res) => {
   const { name, email, message } = req.body;
   const transporter = nodemailer.createTransport({
-    service: "yahoo",
+    service: "zoho",
     auth: {
       user: process.env.EMAIL,
       pass: process.env.PASS,
@@ -21,6 +21,7 @@ export const emailMe = (req, res) => {
       console.log(err);
     } else {
       console.log(`Email sent: ${info.response}`);
+      res.status(200).json({message: info.response})
     }
   });
 };
