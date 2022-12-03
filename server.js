@@ -14,7 +14,7 @@ const port = process.env.PORT || 8080;
 const allowedOrigins = [
   "http://localhost:3000",
   "https://react-folio.onrender.com",
-  "https://www.ryanlarge.dev"
+  "https://www.ryanlarge.dev",
 ];
 
 app.use(
@@ -32,7 +32,7 @@ app.use(
   })
 );
 app.use(parser.urlencoded({ extended: false }));
-app.use(parser.json())
+app.use(parser.json());
 app.use("/", downloadRouter);
 app.use("/dev", devRouter);
 app.use("/mailme", emailRouter);

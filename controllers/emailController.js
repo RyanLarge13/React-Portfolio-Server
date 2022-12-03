@@ -1,6 +1,11 @@
 import nodemailer from "nodemailer";
+import { validateResults } from "express-validator";
 
 export const emailMe = (req, res) => {
+const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
   const { name, email, message } = req.body;
   const transporter = nodemailer.createTransport({
     service: "zoho",
@@ -21,7 +26,7 @@ export const emailMe = (req, res) => {
       console.log(err);
     } else {
       console.log(`Email sent: ${info.response}`);
-      res.status(200).json({message: info.response})
+      res.status(200).json({ message: info.response });
     }
   });
 };
