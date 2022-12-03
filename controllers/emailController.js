@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { validateResults } from "express-validator";
+import { validationResult } from "express-validator";
 
 export const emailMe = (req, res) => {
 const errors = validationResult(req);
