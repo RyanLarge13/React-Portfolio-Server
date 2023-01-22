@@ -1,12 +1,17 @@
 import mongoose from "mongoose";
 
-const getProjectsFromCollection = async () => {
+const getProjectsFromCollection = async (pageNum) => {
   try {
+    const itemAmount = 6;
     let projectsCollection = mongoose.connection.collection("projects");
-    let allProjects = await projectsCollection.find({}).toArray();
+    let allProjects = await projectsCollection
+      .find({})
+      .skip(Number(pageNum) * itemAmount)
+      .limit(itemAmount)
+      .toArray();
     return allProjects;
   } catch (err) {
-    return err;
+    return console.log(err);
   }
 };
 
@@ -21,7 +26,8 @@ const getBlogsFromCollection = async () => {
 };
 
 export const sendProjects = async (req, res) => {
-  const projects = await getProjectsFromCollection();
+  const pageNum = req.params.page;
+  const projects = await getProjectsFromCollection(pageNum);
   res.status(200).json({ data: projects });
 };
 
