@@ -1,12 +1,11 @@
 import nodemailer from "nodemailer";
 import { validationResult } from "express-validator";
-
+/*Initializing a transporter and checking for errors*/
 export const emailMe = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { name, email, message } = req.body;
   const transporter = nodemailer.createTransport({
     service: "zoho",
     auth: {
@@ -14,6 +13,11 @@ export const emailMe = (req, res) => {
       pass: process.env.PASS,
     },
   });
+  sendMail(req, res, transporter);
+};
+/*Accessing req.body and sending the email with the transporter*/
+const sendMail = (req, res, transporter) => {
+  const { name, email, message } = req.body;
   const mailOptions = {
     from: {
       name: name,
@@ -24,7 +28,6 @@ export const emailMe = (req, res) => {
     text: message,
     replyTo: email,
   };
-
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       console.log(err);

@@ -8,7 +8,7 @@ import { emailRouter } from "./routes/emailRouter.js";
 import { connectDB } from "./config/db.js";
 dotenv.config();
 connectDB();
-
+/*=====Initializing Express & defining origins and port======*/
 const app = express();
 const port = process.env.PORT || 8080;
 const allowedOrigins = [
@@ -16,7 +16,7 @@ const allowedOrigins = [
   "https://react-folio.onrender.com",
   "https://www.ryanlarge.dev",
 ];
-
+/*======Middleware======*/
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -36,7 +36,7 @@ app.use(parser.json());
 app.use("/", downloadRouter);
 app.use("/dev", devRouter);
 app.use("/mailme", emailRouter);
-
+/*======Providing Express with the port to listen and start the server======*/
 app.listen(port, "0.0.0.0", () =>
   console.log(`Your app is running on port ${port} : https://localhost:${port}`)
 );
